@@ -59,7 +59,7 @@ export const UIPath = () => {
   const [isInvalid, setIsInvalid] = useState(false);
 
   const url = "";
-  const base_url = `https://discoverapi-discover-api.cp4ba-mission-16bf47a9dc965a843455de9f2aef2035-0000.eu-de.containers.appdomain.cloud/`;
+  const base_url = `http://discover-api-discover-api.cp4ba-mission-16bf47a9dc965a843455de9f2aef2035-0000.eu-de.containers.appdomain.cloud/`;
 
   const clearCreateData = () => {
     setClientID("");
@@ -187,7 +187,7 @@ export const UIPath = () => {
         } else {
           console.log(data);
           setToken(data?.access_token);
-          folders(data?.access_token)
+          folders(data?.access_token);
         }
       })
       .catch((err) => {
@@ -468,23 +468,10 @@ export const UIPath = () => {
                           {header.header}
                         </TableHeader>
                       ))}
+                      <TableHeader></TableHeader>
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {/* {rows.map((row, i) => (
-                      <TableRow key={i} {...getRowProps({ row })}>
-                        <TableSelectRow
-                          {...getSelectionProps({ row })}
-                          onSelect={(evt) => {
-                            startProcess(row);
-                            getSelectionProps({ row }).onSelect(evt);
-                          }}
-                        />
-                        {row.cells.map((cell) => (
-                          <TableCell key={cell.id}>{cell.value}</TableCell>
-                        ))}
-                      </TableRow>
-                    ))} */}
                     {rows.map((row, i) => (
                       <>
                         <React.Fragment key={i + row.id}>
@@ -492,6 +479,16 @@ export const UIPath = () => {
                             {row.cells.map((cell) => (
                               <TableCell key={cell.id}>{cell.value}</TableCell>
                             ))}
+                            <TableCell>
+                              {" "}
+                              <Button
+                                kind="tertiary"
+                                size="sm"
+                                onClick={(e) => startProcess(row)}
+                              >
+                                Start process
+                              </Button>
+                            </TableCell>
                           </TableExpandRow>
                           <TableExpandedRow
                             colSpan={headers.length + 3}
@@ -501,7 +498,11 @@ export const UIPath = () => {
                             {release[i]?.argument.length ? (
                               <>
                                 {release[i]?.argument.map((item) => (
-                                  <><p>{item.name} : {item.type}</p></>
+                                  <>
+                                    <p>
+                                      {item.name} : {item.type}
+                                    </p>
+                                  </>
                                 ))}
                               </>
                             ) : (
