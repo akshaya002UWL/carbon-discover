@@ -5,7 +5,7 @@ COPY . .
 RUN npm install
 RUN npm build
 # production environment
-FROM nginx:stable-alpine
+FROM nginxinc/nginx-unprivileged
 COPY --from=build /app .
 RUN chgrp -R root /var/cache/nginx /var/run /var/log/nginx && \
     chmod -R 770 /var/cache/nginx /var/run /var/log/nginx
