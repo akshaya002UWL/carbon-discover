@@ -1,18 +1,9 @@
-FROM node:alpine
-
-WORKDIR /usr/app
-
-USER root
-
-## Remove root tagged files from old version of npm
-## Upgrade npm and replace UBI version 8.3.1
-RUN npm cache clean –force 
-
-COPY package.json .
-RUN npm install
-
-RUN mkdir node_modules/.cache && chmod -R 777 node_modules/.cache
-
+# build environment
+FROM node:13.12.0-alpine as build
+WORKDIR /app
 COPY . .
+RUN npm ci
+RUN npm build
 
-CMD ["npm", "run", "start"]
+EXPOSE 8080
+CMD ["npm", "start"]
