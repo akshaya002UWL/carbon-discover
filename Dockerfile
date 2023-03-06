@@ -7,7 +7,8 @@ RUN npm build
 # production environment
 FROM nginxinc/nginx-unprivileged
 COPY --from=build /app .
-RUN chgrp -R root /var/cache/nginx /var/run /var/log/nginx && \
+RUN chmod -R 755 /var/cache/nginx /var/run /var/log/nginx  && \ 
+    chgrp -R root /var/cache/nginx /var/run /var/log/nginx && \
     chmod -R 770 /var/cache/nginx /var/run /var/log/nginx
 EXPOSE 8081
 CMD ["nginx", "-g", "daemon off;"]
