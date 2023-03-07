@@ -24,7 +24,7 @@ export const NavHeader = () => {
         <HeaderNavigation aria-label="IBM [Platform]">
         <HeaderMenu aria-label="IBM Automation " menuLinkName="IBM Automation ">
             <HeaderMenuItem href="/baw">BAW</HeaderMenuItem>
-            <HeaderMenuItem href="#">ODM</HeaderMenuItem>
+            <HeaderMenuItem href="/">ODM</HeaderMenuItem>
             <HeaderMenuItem href="#">RPA</HeaderMenuItem>
           </HeaderMenu>
           <HeaderMenu aria-label="3rd Party Automation " menuLinkName="3rd Party Automation ">
