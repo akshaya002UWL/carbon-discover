@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import { Search, Notification, Switcher } from "@carbon/icons-react";
+import logo from './discover.jpg'
 import {
   Header,
   HeaderName,
@@ -19,7 +20,7 @@ export const NavHeader = () => {
     <Theme theme="white">
       <Header aria-label="IBM Platform Name">
         <HeaderName href="/" prefix="">
-          Discover
+          <img className="logo" src={logo} />
         </HeaderName>
         <HeaderNavigation aria-label="IBM [Platform]">
         <HeaderMenu aria-label="IBM Automation " menuLinkName="IBM Automation ">

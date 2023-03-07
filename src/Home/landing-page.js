@@ -15,7 +15,7 @@ export const LandingPage = () => {
     <>
       <Grid className="landing-page" fullWidth>
         <Column lg={16} md={8} sm={4} className="landing-page__banner">
-          <h1 className="landing-page__heading">Discover</h1>
+          <h1 className="landing-page__heading"></h1>
         </Column>
         <Column lg={16} md={8} sm={4} className="landing-page__r2">
           <Tabs defaultSelectedIndex={0}>
@@ -36,11 +36,16 @@ export const LandingPage = () => {
                       What is Discover?
                     </h2>
                     <p className="landing-page__p">
-                      This is Discover and  Train. It includes 3 variances of
-                      discovery .First is IBM Automation , which includes BAW, ODM, RPA . Second is 3rd Party
-                      Automation , Mostly RPA focused  UIPath, AA . Third is OpenAPI
-                      based Patterns which includes All Open API, Patterns from Workato,
-                      Zapier
+                    Discover Automations Leverage your existing automation investments by seamlessly discovering and 
+                    converting them into Watson Orchestrate skills. Discover IBM Automation services from 
+                    <p style={{padding:"1em"}}><ul style={{listStyle:"disc"}}>
+                      <li>Cloud Pak for Business Automation and Integration</li>
+                      <li>Third party RPA providers</li>
+                      <li>Third party integration flows</li>
+                    </ul>
+
+
+                    </p>
                     </p>
                     <Button style={{ marginTop: "3em" }}>Learn more</Button>
                   </Column>
@@ -51,7 +56,7 @@ export const LandingPage = () => {
                     style={{ marginTop: "3em" }}
                   >
                     <ClickableTile href="/baw" style={{ marginRight: "3em" }}>
-                      <h6>BAW</h6>
+                      <h6>Cloud Pak for Business Automation</h6>
                       <div class="cds--resource-card__icon--action">
                         <svg
                           focusable="false"
