@@ -1,0 +1,81 @@
+@import 'carbon';
+
+body {
+  @include carbon--theme();
+
+  background-color: $ui-background;
+  color: $text-01;
+  overflow-x: hidden;
+
+}
+.c4p--create-full-page.full-page-example{
+  margin-top: 3em !important;
+}
+.c4p--create-full-page.full-page-example{
+  height: 95vh !important;
+}
+.bx--row {
+  display: block !important;
+}
+.bx--col-sm-3.bx--col-md-3.bx--col-lg-3.bx--col-xlg-3{
+  max-width: 100%;
+}
+div#ccs-2-tabpanel-0{
+  position: absolute;
+}
+
+.landing-page__banner {
+  padding-top: 1rem;
+  padding-bottom: 8rem;
+  background-color: #f4f4f4;
+  position: relative;
+  padding-left: 1em;
+  margin-top: 3em;
+  margin-left: -3em;
+  }
+
+.landing-page__r2 .cds--tabs--scrollable {
+  transform: translateZ(0);
+  justify-content: flex-end;
+}
+
+.landing-page__r2 .cds--tab-content {
+  padding: 0;
+}
+
+.cds--tab--list {
+  justify-content: flex-end;
+  padding-right: 0rem;
+}
+
+.cds--subgrid--wide {
+  //fix needed to keep the subgrid from scrolling horizontally
+  margin-right: 1rem;
+}
+
+.landing-page__illo {
+  max-width: 100%;
+}
+.bx--grid--full-width {
+  max-width: 165em !important;
+}
+.bx--grid {
+  margin-right: -7em !important;
+  overflow-x: hidden;
+
+}
+.bx--col-sm-4.bx--col-md-4.bx--col-lg-8.bx--offset-lg-7{
+  margin-left: 0 !important;
+  display: flex;
+}
+a.cds--link.cds--tile.cds--tile--clickable {
+  height: 15em;
+  width: 18em;
+}
+.cds--resource-card__icon--action {
+  bottom: 1rem;
+  height: 20px;
+  position: absolute;
+  right: 1rem;
+  width: 20px;
+}
