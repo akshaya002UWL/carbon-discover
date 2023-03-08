@@ -33,10 +33,10 @@ export const LandingPage = () => {
                     style={{ marginTop: "3em" }}
                   >
                     <h2 className="landing-page__subheading">
-                      What is Discover?
+                    Discover Automations 
                     </h2>
                     <p className="landing-page__p">
-                    Discover Automations Leverage your existing automation investments by seamlessly discovering and 
+                    Leverage your existing automation investments by seamlessly discovering and 
                     converting them into Watson Orchestrate skills. Discover IBM Automation services from 
                     <p style={{padding:"1em"}}><ul style={{listStyle:"disc"}}>
                       <li>Cloud Pak for Business Automation and Integration</li>
