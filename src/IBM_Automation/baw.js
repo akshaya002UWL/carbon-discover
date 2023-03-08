@@ -50,7 +50,7 @@ export const BAW = () => {
   const [showCode, setShowCode] = useState(false);
   const [code, setCode] = useState("");
 
-  const base_url = `http://discover-api-discover-api.cp4ba-mission-16bf47a9dc965a843455de9f2aef2035-0000.eu-de.containers.appdomain.cloud/`;
+  const base_url = `https://discoverapi-discover-api.cp4ba-mission-16bf47a9dc965a843455de9f2aef2035-0000.eu-de.containers.appdomain.cloud/`;
 
   const clearCreateData = () => {
     setUsername("");
