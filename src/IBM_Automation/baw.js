@@ -50,8 +50,9 @@ export const BAW = () => {
   const [showCode, setShowCode] = useState(false);
   const [code, setCode] = useState("");
 
-  const base_url = `https://discoverapi-discover-api.cp4ba-mission-16bf47a9dc965a843455de9f2aef2035-0000.eu-de.containers.appdomain.cloud/`;
-
+  // const base_url = `https://discoverapi-discover-api.cp4ba-mission-16bf47a9dc965a843455de9f2aef2035-0000.eu-de.containers.appdomain.cloud/`;
+  const base_url = `http://127.0.0.1:8081/`
+  
   const clearCreateData = () => {
     setUsername("");
     setPassword("");
@@ -66,10 +67,13 @@ export const BAW = () => {
     setCode("");
   };
   useEffect(() => {
-    fetch(base_url + "common-assets")
+      fetch(base_url + "common-assets")
       .then((response) => response.json())
       .then((data) => {
-        setRowData(data.common_assets);
+        if(data){
+           setRowData(data.common_assets);
+        }
+         
       })
       .catch((err) => {
         console.log(err.message);
@@ -77,43 +81,86 @@ export const BAW = () => {
   }, []);
 
   function getFullDetails(row) {
+    const filtered = rowData.filter(x => x.id == row.id )[0];
     setShowCode(false);
-    setShowSpecTable(false);
-    fetch(base_url + "detail?id=" + row.id)
-      .then((response) => response.json())
-      .then((data) => {
-        let opData = [];
-        if (data.common_assets.length) {
-          setShowSpecTable(true);
-        }
-        data.common_assets.map((allData) => {
-          let name = allData.name;
-          let sub_type = allData.sub_type;
-          let id = allData.id;
-          let project_name = allData?.origin?.snapshot?.project_name;
-          let version = allData?.version;
-          let description = allData?.description;
-
-          allData.operations.map((operations) => {
-            opData.push({
-              id: id,
-              name: name,
-              sub_type: sub_type,
-              op_name: operations.op_name,
-              op_parms: operations.op_parms,
-              project_name: project_name,
-              version: version,
-              description: description,
+    setOpRowData([]);
+    if(filtered?.sub_type == 'workflow'){
+      setShowSpecTable(false);
+      fetch(base_url + "detail?id=" + row.id)
+        .then((response) => response.json())
+        .then((data) => {
+          let opData = [];
+          if (data.common_assets.length) {
+            setShowSpecTable(true);
+          }
+          data.common_assets.map((allData) => {
+            let name = allData.name;
+            let sub_type = allData.sub_type;
+            let id = allData.id;
+            let project_name = allData?.origin?.snapshot?.project_name;
+            let version = allData?.version;
+            let description = allData?.description;
+  
+            allData.operations.map((operations) => {
+              opData.push({
+                id: id,
+                name: name,
+                sub_type: sub_type,
+                op_name: operations.op_name,
+                op_parms: operations.op_parms,
+                project_name: project_name,
+                version: version,
+                description: description,
+              });
             });
           });
+          var testData = [];
+          testData.push(opData[0]);
+          setOpRowData(testData);
+        })
+        .catch((err) => {
+          console.log(err.message);
         });
-        var testData = [];
-        testData.push(opData[0]);
-        setOpRowData(testData);
+    }else if(filtered?.sub_type == 'decision'){
+      fetch(base_url + "openapi_ADS?id=" + row.id)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        // let opData = [];
+        // if (data.common_assets.length) {
+        //   setShowSpecTable(true);
+        // }
+        // data.common_assets.map((allData) => {
+        //   let name = allData.name;
+        //   let sub_type = allData.sub_type;
+        //   let id = allData.id;
+        //   let project_name = allData?.origin?.snapshot?.project_name;
+        //   let version = allData?.version;
+        //   let description = allData?.description;
+
+        //   allData.operations.map((operations) => {
+        //     opData.push({
+        //       id: id,
+        //       name: name,
+        //       sub_type: sub_type,
+        //       op_name: operations.op_name,
+        //       op_parms: operations.op_parms,
+        //       project_name: project_name,
+        //       version: version,
+        //       description: description,
+        //     });
+        //   });
+        // });
+        // var testData = [];
+        // testData.push(opData[0]);
+        // setOpRowData(testData);
       })
       .catch((err) => {
         console.log(err.message);
       });
+    }
+    console.log(filtered);
+    
   }
   var button = document.getElementsByClassName("bx--btn bx--btn--secondary")[0];
   button?.addEventListener("click", () => {
