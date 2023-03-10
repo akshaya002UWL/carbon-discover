@@ -98,10 +98,11 @@ export const BAW = () => {
             let project_name = allData?.origin?.snapshot?.project_name;
             let version = allData?.version;
             let description = allData?.description;
-
-            allData.operations.map((operations) => {
+console.log(allData.operations);
+            allData.operations.map((operations,i) => {
+              console.log(operations,i);
               opData.push({
-                id: id,
+                id: id+i,
                 name: name,
                 sub_type: sub_type,
                 op_name: operations.op_name,
@@ -113,9 +114,9 @@ export const BAW = () => {
             });
           });
           var testData = [];
-          testData.push(opData[0]);
-          console.log(opData[0]);
-          setOpRowData(testData);
+          testData.push(opData);
+          console.log(opData);
+          setOpRowData(opData);
         })
         .catch((err) => {
           console.log(err.message);
@@ -452,7 +453,7 @@ export const BAW = () => {
                                     className="demo-expanded-td"
                                   >
                                     <h6>Parameter details</h6>
-                                    {opRowData[0]?.op_parms.map((op, i) => (
+                                    {opRowData[i]?.op_parms.map((op, i) => (
                                       <>
                                         <p>
                                           {op.parm_name} : {op.parm_type}
